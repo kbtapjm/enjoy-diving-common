@@ -2,8 +2,12 @@ package kr.co.pjm.diving.common.repasitory.support.impl;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport;
 import org.springframework.stereotype.Repository;
+
+import com.querydsl.core.dml.UpdateClause;
+import com.querydsl.jpa.impl.JPAUpdateClause;
 
 import kr.co.pjm.diving.common.domain.dto.UserBasicDto;
 import kr.co.pjm.diving.common.domain.entity.QUserBasic;
@@ -33,17 +37,26 @@ public class UserBasicRepositoryImpl extends QueryDslRepositorySupport implement
   public long updateUserBasic(UserBasicDto userBasicDto) {
     QUserBasic qUserBasic = QUserBasic.userBasic;
     
-    Long result = update(qUserBasic)
-        .where(qUserBasic.id.eq(userBasicDto.getId()))
-        .set(qUserBasic.name, userBasicDto.getName())
-        .set(qUserBasic.nickname, userBasicDto.getNickname())
-        .set(qUserBasic.country, userBasicDto.getCountry())
-        .set(qUserBasic.gender, userBasicDto.getGender())
-        .set(qUserBasic.introduce, userBasicDto.getIntroduce())
-        .set(qUserBasic.updateDate, new Date())
-        .execute();
+    UpdateClause<JPAUpdateClause> update = update(qUserBasic).where(qUserBasic.id.eq(userBasicDto.getId()));
     
-    return result;
+    if (!StringUtils.isEmpty(userBasicDto.getName())) {
+      update.set(qUserBasic.name, userBasicDto.getName());
+    }
+    if (!StringUtils.isEmpty(userBasicDto.getNickname())) {
+      update.set(qUserBasic.nickname, userBasicDto.getNickname());
+    }
+    if (!StringUtils.isEmpty(userBasicDto.getCountry())) {
+      update.set(qUserBasic.country, userBasicDto.getCountry());
+    }
+    if (userBasicDto.getGender() != null) {
+      update.set(qUserBasic.gender, userBasicDto.getGender());
+    }
+    if (!StringUtils.isEmpty(userBasicDto.getIntroduce())) {
+      update.set(qUserBasic.introduce, userBasicDto.getIntroduce());
+    }
+    update.set(qUserBasic.updateDate, new Date());
+    
+    return update.execute();
   }
 
   @Override

@@ -2,8 +2,12 @@ package kr.co.pjm.diving.common.repasitory.support.impl;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport;
 import org.springframework.stereotype.Repository;
+
+import com.querydsl.core.dml.UpdateClause;
+import com.querydsl.jpa.impl.JPAUpdateClause;
 
 import kr.co.pjm.diving.common.domain.dto.UserDiveDto;
 import kr.co.pjm.diving.common.domain.entity.QUserDive;
@@ -33,16 +37,23 @@ public class UserDiveRepositoryImpl extends QueryDslRepositorySupport implements
   public long updateUserDive(UserDiveDto userDiveDto) {
     QUserDive qUserDive = QUserDive.userDive;
     
-    Long result = update(qUserDive)
-        .where(qUserDive.id.eq(userDiveDto.getId()))
-        .set(qUserDive.diveGroup, userDiveDto.getDiveGroup())
-        .set(qUserDive.diveLevel, userDiveDto.getDiveLevel())
-        .set(qUserDive.team, userDiveDto.getTeam())
-        .set(qUserDive.signature, userDiveDto.getSignature())
-        .set(qUserDive.updateDate, new Date())
-        .execute();
+    UpdateClause<JPAUpdateClause> update = update(qUserDive).where(qUserDive.id.eq(userDiveDto.getId()));
     
-    return result;
+    if (!StringUtils.isEmpty(userDiveDto.getDiveGroup())) {
+      update.set(qUserDive.diveGroup, userDiveDto.getDiveGroup());
+    }
+    if (!StringUtils.isEmpty(userDiveDto.getDiveLevel())) {
+      update.set(qUserDive.diveLevel, userDiveDto.getDiveLevel());
+    }
+    if (!StringUtils.isEmpty(userDiveDto.getTeam())) {
+      update.set(qUserDive.team, userDiveDto.getTeam());
+    }
+    if (!StringUtils.isEmpty(userDiveDto.getSignature())) {
+      update.set(qUserDive.signature, userDiveDto.getSignature());
+    }
+    update.set(qUserDive.updateDate, new Date());
+    
+    return update.execute();
   }
 
 }
