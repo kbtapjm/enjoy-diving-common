@@ -44,7 +44,7 @@ public class DiveLog extends CommonSysEntity {
   
   /* 다이브 날짜 */
   @Column(name = "dive_date", nullable = false)
-  @Temporal(TemporalType.TIMESTAMP)
+  @Temporal(TemporalType.DATE)
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @JsonFormat(pattern="yyyy-MM-dd")
   private Date diveDate;
