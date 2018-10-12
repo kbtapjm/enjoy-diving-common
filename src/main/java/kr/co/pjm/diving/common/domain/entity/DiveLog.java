@@ -39,7 +39,7 @@ public class DiveLog extends CommonSysEntity {
   private Long id;
   
   /* 번호 */
-  @Column(name = "dive_no", nullable = false, unique = true)
+  @Column(name = "dive_no", nullable = false)
   private Long diveNo;
   
   /* 다이브 날짜 */
