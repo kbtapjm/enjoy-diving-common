@@ -23,6 +23,7 @@ import kr.co.pjm.diving.common.domain.enumeration.DivePlanToolEnum;
 import kr.co.pjm.diving.common.domain.enumeration.DiveTypeEnum;
 import kr.co.pjm.diving.common.domain.enumeration.DiveWaterEnum;
 import kr.co.pjm.diving.common.domain.enumeration.DiveWaveEnum;
+import kr.co.pjm.diving.common.domain.enumeration.YnEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -124,32 +125,39 @@ public class DiveLog extends CommonSysEntity {
   private DivePlanExrPtnEnum divePlanExrPtn;
   
   /* 다이브 후드 여부 */
-  @Column(name = "dive_plan_hood_yn", nullable = true, length = 1)
-  private String divePlanHoodYn;
+  @Column(name = "dive_plan_hood_yn", nullable = true)
+  @Enumerated(EnumType.STRING)
+  private YnEnum divePlanHoodYn;
   
   /* 다이브 장갑 여부 */
-  @Column(name = "dive_plan_gloves_yn", nullable = true, length = 1)
-  private String divePlanGlovesYn;
+  @Column(name = "dive_plan_gloves_yn", nullable = true)
+  @Enumerated(EnumType.STRING)
+  private YnEnum divePlanGlovesYn;
   
   /* 다이브 부츠 여부 */
-  @Column(name = "dive_plan_boots_yn", nullable = true, length = 1)
-  private String divePlanBootsYn;
+  @Column(name = "dive_plan_boots_yn", nullable = true)
+  @Enumerated(EnumType.STRING)
+  private YnEnum divePlanBootsYn;
   
   /* 다이브 라이트 여부 */
-  @Column(name = "dive_plan_light_yn", nullable = true, length = 1)
-  private String divePlanLightYn;
+  @Column(name = "dive_plan_light_yn", nullable = true)
+  @Enumerated(EnumType.STRING)
+  private YnEnum divePlanLightYn;
   
   /* 다이브 SMB 여부 */
-  @Column(name = "dive_plan_smb_yn", nullable = true, length = 1)
-  private String divePlanSmbYn;
+  @Column(name = "dive_plan_smb_yn", nullable = true)
+  @Enumerated(EnumType.STRING)
+  private YnEnum divePlanSmbYn;
   
   /* 다이브 나이프 여부 */
-  @Column(name = "dive_plan_knife_yn", nullable = true, length = 1)
-  private String divePlanKnifeYn;
+  @Column(name = "dive_plan_knife_yn", nullable = true)
+  @Enumerated(EnumType.STRING)
+  private YnEnum divePlanKnifeYn;
   
   /* 다이브 카메라 여부 */
-  @Column(name = "dive_plan_camera_yn", nullable = true, length = 1)
-  private String divePlanCameraYn;
+  @Column(name = "dive_plan_camera_yn", nullable = true)
+  @Enumerated(EnumType.STRING)
+  private YnEnum divePlanCameraYn;
   
   /* 시야 */
   @Column(name = "visibility", nullable = false, length = 10)
@@ -189,13 +197,13 @@ public class DiveLog extends CommonSysEntity {
   
   @PrePersist
   public void prePersist() {
-      this.divePlanHoodYn = this.divePlanHoodYn != null ? this.divePlanHoodYn : "N";
-      this.divePlanGlovesYn = this.divePlanGlovesYn != null ? this.divePlanGlovesYn : "N";
-      this.divePlanBootsYn = this.divePlanBootsYn != null ? this.divePlanBootsYn : "N";
-      this.divePlanLightYn = this.divePlanLightYn != null ? this.divePlanLightYn : "N";
-      this.divePlanSmbYn = this.divePlanSmbYn != null ? this.divePlanSmbYn : "N";
-      this.divePlanKnifeYn = this.divePlanKnifeYn != null ? this.divePlanKnifeYn : "N";
-      this.divePlanCameraYn = this.divePlanCameraYn != null ? this.divePlanCameraYn : "N";
+      this.divePlanHoodYn = this.divePlanHoodYn != null ? this.divePlanHoodYn : YnEnum.N;
+      this.divePlanGlovesYn = this.divePlanGlovesYn != null ? this.divePlanGlovesYn : YnEnum.N;
+      this.divePlanBootsYn = this.divePlanBootsYn != null ? this.divePlanBootsYn : YnEnum.N;
+      this.divePlanLightYn = this.divePlanLightYn != null ? this.divePlanLightYn : YnEnum.N;
+      this.divePlanSmbYn = this.divePlanSmbYn != null ? this.divePlanSmbYn : YnEnum.N;
+      this.divePlanKnifeYn = this.divePlanKnifeYn != null ? this.divePlanKnifeYn : YnEnum.N;
+      this.divePlanCameraYn = this.divePlanCameraYn != null ? this.divePlanCameraYn : YnEnum.N;
   }
   
 }
