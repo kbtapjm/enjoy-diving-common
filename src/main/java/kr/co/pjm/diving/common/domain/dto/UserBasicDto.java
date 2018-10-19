@@ -4,20 +4,8 @@ import kr.co.pjm.diving.common.domain.entity.UserBasic;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * <pre>
- * @Package Name : kr.co.pjm.diving.web.domain.dto
- * @Class Name : UserBasicDto.java
- * </pre>
- * 
- * @author : jmpark
- * @Date : 2017. 5. 9.
- * @Version : 1.0
- * @Description : 유저 기본 DTO
- *
- */
-@Getter @Setter
+@Getter
+@Setter
 public class UserBasicDto extends UserBasic {
-  
-
+  private static final long serialVersionUID = 3913253711013777828L;
 }

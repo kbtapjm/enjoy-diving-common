@@ -18,36 +18,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/**
- * <pre>
- * @Package Name : kr.co.pjm.diving.web.domain.entity
- * @Class Name : UserAuthority.java
- * </pre>
- * 
- * @author : jmpark
- * @Date : 2017. 5. 4.
- * @Version : 1.0
- * @Description : 권한 엔티티
- *
- */
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity(name = "role")
 public class Role extends CommonEntity {
-  
+
+  private static final long serialVersionUID = 8699993725039806034L;
+
   @Id
   @GeneratedValue
   private Long id;
-  
+
   /* 롤 */
   @Column(name = "role", nullable = false)
   @Enumerated(EnumType.STRING)
   private RoleTypeEnum role;
-  
+
   /* 롤이름 */
   @Column(name = "role_name", nullable = false)
   private String roleName;
-  
+
   /* 유저 롤 엔티티 */
   @JsonBackReference
   @OneToMany(mappedBy = "role")

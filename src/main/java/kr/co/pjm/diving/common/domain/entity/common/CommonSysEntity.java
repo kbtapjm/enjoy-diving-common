@@ -23,21 +23,22 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
-@MappedSuperclass 
+@Getter
+@Setter
+@MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class CommonSysEntity implements Serializable {
 
   private static final long serialVersionUID = 5302749373989416956L;
-  
+
   @Column(name = "reg_id", nullable = false, insertable = true, updatable = false)
   @CreatedBy
   private String regId;
-  
+
   @Column(name = "update_id", nullable = true, insertable = false, updatable = true)
   @LastModifiedBy
   private String updateId;
-  
+
   @Column(name = "reg_date", nullable = false, insertable = true, updatable = false)
   @Temporal(TemporalType.TIMESTAMP)
   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

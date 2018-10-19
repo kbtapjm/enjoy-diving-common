@@ -16,8 +16,8 @@ import lombok.Data;
 @Entity
 @IdClass(ProjectId.class)
 @Table(name = "USERCONNECTION", uniqueConstraints = {
-        @UniqueConstraint(name = "UserConnectionRank", columnNames = { "userId", "providerId", "rank" }),
-        @UniqueConstraint(name = "providerUser", columnNames = { "providerId", "providerUserId" }) })
+    @UniqueConstraint(name = "UserConnectionRank", columnNames = { "userId", "providerId", "rank" }),
+    @UniqueConstraint(name = "providerUser", columnNames = { "providerId", "providerUserId" }) })
 public class UserConnection {
 
   @Id
@@ -55,13 +55,13 @@ public class UserConnection {
 
   @Column(name = "EXPIRETIME")
   private Long expireTime;
-  
+
   @Data
   static class ProjectId implements Serializable {
-      private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-      String userId;
-      String providerId;
-      String providerUserId;
+    String userId;
+    String providerId;
+    String providerUserId;
   }
 }

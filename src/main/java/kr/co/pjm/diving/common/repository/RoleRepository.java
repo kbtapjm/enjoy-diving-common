@@ -7,21 +7,9 @@ import org.springframework.stereotype.Repository;
 import kr.co.pjm.diving.common.domain.entity.Role;
 import kr.co.pjm.diving.common.domain.enumeration.RoleTypeEnum;
 
-/**
- * <pre>
- * @Package Name : kr.co.pjm.diving.web.repasitory
- * @Class Name : RoleRepository.java
- * </pre>
- * 
- * @author : jmpark
- * @Date : 2017. 5. 9.
- * @Version : 1.0
- * @Description : 롤 레파지토리 
- *
- */
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long>, QueryDslPredicateExecutor<Role> {
-  
-  Role findByRole(RoleTypeEnum  roleTypeEnum);
+
+  Role findByRole(RoleTypeEnum roleTypeEnum);
 
 }

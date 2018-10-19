@@ -3,20 +3,7 @@ package kr.co.pjm.diving.common.domain.enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * <pre>
- * &#64;Package Name : kr.co.pjm.diving.common.domain.enumeration
- * &#64;Class Name : RoleTypeEnum.java
- * </pre>
- * 
- * @author : jmpark
- * @Date : 2017. 5. 4.
- * @Version : 1.0
- * @Description : 유저 ROLE
- *
- */
 public enum RoleTypeEnum {
-
   ADMIN(100, "ADMIN"), MANAGER(200, "MANAGER"), USER(300, "USER");
 
   private int code;
@@ -62,14 +49,14 @@ public enum RoleTypeEnum {
 
   public static RoleTypeEnum valueOf(int value) {
     switch (value) {
-      case 100:
-        return RoleTypeEnum.ADMIN;
-      case 200:
-        return RoleTypeEnum.MANAGER;
-      case 999:
-        return RoleTypeEnum.USER;
-      default:
-        throw new AssertionError("Unknown RoleType : " + value);
+    case 100:
+      return RoleTypeEnum.ADMIN;
+    case 200:
+      return RoleTypeEnum.MANAGER;
+    case 999:
+      return RoleTypeEnum.USER;
+    default:
+      throw new AssertionError("Unknown RoleType : " + value);
     }
   }
 

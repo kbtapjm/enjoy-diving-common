@@ -21,21 +21,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/**
- * <pre>
- * @Package Name : kr.co.pjm.diving.web.domain.entity
- * @Class Name : UserRole.java
- * </pre>
- * 
- * @author : jmpark
- * @Date : 2017. 5. 9.
- * @Version : 1.0
- * @Description : 유저 롤 엔티티
- *
- */
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity(name = "user_role")
-public class UserRole implements Serializable  {
+public class UserRole implements Serializable {
 
   private static final long serialVersionUID = -2217636749873040022L;
 
@@ -45,23 +35,23 @@ public class UserRole implements Serializable  {
   @JoinColumn(name = "user_id")
   @JsonBackReference
   private User user;
-  
+
   /* 롤 */
   @Id
   @ManyToOne
   @JoinColumn(name = "role_id")
   private Role role;
-  
+
   /* 등록일 */
   @Column(name = "reg_date", nullable = false, insertable = true, updatable = false)
   @Temporal(TemporalType.TIMESTAMP)
   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+9")
   private Date regDate;
-  
+
   @PrePersist
   public void prePersist() {
-      this.regDate = new Date();
+    this.regDate = new Date();
   }
-  
+
 }

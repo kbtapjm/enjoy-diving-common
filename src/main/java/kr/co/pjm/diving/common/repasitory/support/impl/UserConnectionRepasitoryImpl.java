@@ -7,7 +7,6 @@ import kr.co.pjm.diving.common.domain.entity.QUserConnection;
 import kr.co.pjm.diving.common.domain.entity.UserConnection;
 import kr.co.pjm.diving.common.repasitory.support.UserConnectionRepasitorySupport;
 
-
 @Repository
 public class UserConnectionRepasitoryImpl extends QueryDslRepositorySupport implements UserConnectionRepasitorySupport {
 

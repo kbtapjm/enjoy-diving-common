@@ -8,6 +8,7 @@ import kr.co.pjm.diving.common.domain.entity.UserConnection;
 import kr.co.pjm.diving.common.repasitory.support.UserConnectionRepasitorySupport;
 
 @Repository
-public interface UserConnectionRepasitory extends JpaRepository<UserConnection, Long>, QueryDslPredicateExecutor<UserConnection>, UserConnectionRepasitorySupport {
+public interface UserConnectionRepasitory extends JpaRepository<UserConnection, Long>,
+    QueryDslPredicateExecutor<UserConnection>, UserConnectionRepasitorySupport {
 
 }
