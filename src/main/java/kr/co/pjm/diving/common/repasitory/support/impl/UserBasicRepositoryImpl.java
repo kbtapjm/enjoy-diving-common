@@ -42,6 +42,10 @@ public class UserBasicRepositoryImpl extends QueryDslRepositorySupport implement
     if (!StringUtils.isEmpty(userBasicDto.getIntroduce())) {
       update.set(qUserBasic.introduce, userBasicDto.getIntroduce());
     }
+    if (userBasicDto.getLoginDate() != null) {
+      update.set(qUserBasic.loginDate, userBasicDto.getLoginDate());
+    }
+    
     update.set(qUserBasic.updateDate, new Date());
 
     return update.execute();
