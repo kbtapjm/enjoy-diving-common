@@ -10,9 +10,13 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import kr.co.pjm.diving.common.domain.entity.UserConnection.ProjectId;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @IdClass(ProjectId.class)
 @Table(name = "USERCONNECTION", uniqueConstraints = {
@@ -56,7 +60,9 @@ public class UserConnection {
   @Column(name = "EXPIRETIME")
   private Long expireTime;
 
-  @Data
+  @Getter
+  @Setter
+  @NoArgsConstructor
   static class ProjectId implements Serializable {
     private static final long serialVersionUID = 1L;
 
