@@ -25,13 +25,13 @@ import kr.co.pjm.diving.common.domain.enumeration.DiveTypeEnum;
 import kr.co.pjm.diving.common.domain.enumeration.DiveWaterEnum;
 import kr.co.pjm.diving.common.domain.enumeration.DiveWaveEnum;
 import kr.co.pjm.diving.common.domain.enumeration.YnEnum;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Setter
-@NoArgsConstructor
 @Entity(name = "dive_log")
 public class DiveLog extends CommonSysEntity {
 
@@ -217,6 +217,53 @@ public class DiveLog extends CommonSysEntity {
     this.divePlanSmbYn = this.divePlanSmbYn != null ? this.divePlanSmbYn : YnEnum.N;
     this.divePlanKnifeYn = this.divePlanKnifeYn != null ? this.divePlanKnifeYn : YnEnum.N;
     this.divePlanCameraYn = this.divePlanCameraYn != null ? this.divePlanCameraYn : YnEnum.N;
+  }
+
+  @Builder
+  public DiveLog(Long id, Long diveNo, Date diveDate, String divePlace, String divePoint, String diveInHour,
+      String diveInMinute, String diveOutHour, String diveOutMinute, String diveTankStart, String diveTankEnd,
+      String groundRestHour, String groundRestMinute, String maxDepth, String avgDepth, String diveTime,
+      String diveSafetyTime, DivePlanToolEnum divePlanTool, String divePlanWeight, String divePlanEanx,
+      DivePlanExrPtnEnum divePlanExrPtn, YnEnum divePlanHoodYn, YnEnum divePlanGlovesYn, YnEnum divePlanBootsYn,
+      YnEnum divePlanLightYn, YnEnum divePlanSmbYn, YnEnum divePlanKnifeYn, YnEnum divePlanCameraYn, String visibility,
+      String temperature, DiveTypeEnum diveType, DiveWaterEnum diveWater, DiveWaveEnum diveWave,
+      DiveCurrentEnum diveCurrent, String diveActivity, String diveNote, String regId) {
+    this.id = id;
+    this.diveNo = diveNo;
+    this.diveDate = diveDate;
+    this.divePlace = divePlace;
+    this.divePoint = divePoint;
+    this.diveInHour = diveInHour;
+    this.diveInMinute = diveInMinute;
+    this.diveOutHour = diveOutHour;
+    this.diveOutMinute = diveOutMinute;
+    this.diveTankStart = diveTankStart;
+    this.diveTankEnd = diveTankEnd;
+    this.groundRestHour = groundRestHour;
+    this.groundRestMinute = groundRestMinute;
+    this.maxDepth = maxDepth;
+    this.avgDepth = avgDepth;
+    this.diveTime = diveTime;
+    this.diveSafetyTime = diveSafetyTime;
+    this.divePlanTool = divePlanTool;
+    this.divePlanWeight = divePlanWeight;
+    this.divePlanEanx = divePlanEanx;
+    this.divePlanExrPtn = divePlanExrPtn;
+    this.divePlanHoodYn = divePlanHoodYn;
+    this.divePlanGlovesYn = divePlanGlovesYn;
+    this.divePlanBootsYn = divePlanBootsYn;
+    this.divePlanLightYn = divePlanLightYn;
+    this.divePlanSmbYn = divePlanSmbYn;
+    this.divePlanKnifeYn = divePlanKnifeYn;
+    this.divePlanCameraYn = divePlanCameraYn;
+    this.visibility = visibility;
+    this.temperature = temperature;
+    this.diveType = diveType;
+    this.diveWater = diveWater;
+    this.diveWave = diveWave;
+    this.diveCurrent = diveCurrent;
+    this.diveActivity = diveActivity;
+    this.diveNote = diveNote;
   }
 
 }
