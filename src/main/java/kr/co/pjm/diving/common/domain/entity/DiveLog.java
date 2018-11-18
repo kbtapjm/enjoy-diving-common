@@ -1,5 +1,6 @@
 package kr.co.pjm.diving.common.domain.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -25,13 +26,15 @@ import kr.co.pjm.diving.common.domain.enumeration.DiveTypeEnum;
 import kr.co.pjm.diving.common.domain.enumeration.DiveWaterEnum;
 import kr.co.pjm.diving.common.domain.enumeration.DiveWaveEnum;
 import kr.co.pjm.diving.common.domain.enumeration.YnEnum;
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+//@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @Getter
+@Setter
 @Entity(name = "dive_log")
 public class DiveLog extends CommonSysEntity {
 
@@ -47,10 +50,9 @@ public class DiveLog extends CommonSysEntity {
 
   /* 다이브 날짜 */
   @Column(name = "dive_date", nullable = false)
-  @Temporal(TemporalType.DATE)
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @JsonFormat(pattern = "yyyy-MM-dd")
-  private Date diveDate;
+  private LocalDate diveDate;
 
   /* 다이브 장소 */
   @Column(name = "dive_place", nullable = false, length = 200)
@@ -220,7 +222,7 @@ public class DiveLog extends CommonSysEntity {
   }
 
   @Builder
-  public DiveLog(Long id, Long diveNo, Date diveDate, String divePlace, String divePoint, String diveInHour,
+  public DiveLog(Long id, Long diveNo, LocalDate diveDate, String divePlace, String divePoint, String diveInHour,
       String diveInMinute, String diveOutHour, String diveOutMinute, String diveTankStart, String diveTankEnd,
       String groundRestHour, String groundRestMinute, String maxDepth, String avgDepth, String diveTime,
       String diveSafetyTime, DivePlanToolEnum divePlanTool, String divePlanWeight, String divePlanEanx,
