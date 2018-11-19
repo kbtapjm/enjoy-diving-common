@@ -1,6 +1,6 @@
 package kr.co.pjm.diving.common.repasitory.support.impl;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport;
@@ -42,11 +42,8 @@ public class UserBasicRepositoryImpl extends QueryDslRepositorySupport implement
     if (!StringUtils.isEmpty(userBasicDto.getIntroduce())) {
       update.set(qUserBasic.introduce, userBasicDto.getIntroduce());
     }
-    if (userBasicDto.getLoginDate() != null) {
-      update.set(qUserBasic.loginDate, userBasicDto.getLoginDate());
-    }
     
-    update.set(qUserBasic.updateDate, new Date());
+    update.set(qUserBasic.updateDate, LocalDateTime.now());
 
     return update.execute();
   }
@@ -57,7 +54,7 @@ public class UserBasicRepositoryImpl extends QueryDslRepositorySupport implement
 
     Long result = update(qUserBasic)
         .where(qUserBasic.id.eq(userBasicDto.getId()))
-        .set(qUserBasic.loginDate, new Date())
+        .set(qUserBasic.loginDate, LocalDateTime.now())
         .execute();
 
     return result;

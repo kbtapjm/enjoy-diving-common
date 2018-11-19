@@ -1,14 +1,12 @@
 package kr.co.pjm.diving.common.domain.entity.common;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -27,25 +25,23 @@ public abstract class CommonEntity implements Serializable {
   private static final long serialVersionUID = -8554163589797728671L;
 
   @Column(name = "reg_date", nullable = false, insertable = true, updatable = false)
-  @Temporal(TemporalType.TIMESTAMP)
   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+9")
-  private Date regDate;
+  private LocalDateTime regDate;
 
   @Column(name = "update_date", nullable = true, insertable = false, updatable = true)
-  @Temporal(TemporalType.TIMESTAMP)
   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+9")
-  private Date updateDate;
+  private LocalDateTime updateDate;
 
   @PrePersist
   public void prePersist() {
-    this.regDate = new Date();
+    this.regDate = LocalDateTime.now();
   }
 
   @PreUpdate
   public void preUpdate() {
-    this.updateDate = new Date();
+    this.updateDate = LocalDateTime.now();
   }
   
   @Override

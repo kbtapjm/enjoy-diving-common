@@ -19,11 +19,11 @@ public class QCommonSysEntity extends EntityPathBase<CommonSysEntity> {
 
     public static final QCommonSysEntity commonSysEntity = new QCommonSysEntity("commonSysEntity");
 
-    public final DateTimePath<java.util.Date> regDate = createDateTime("regDate", java.util.Date.class);
+    public final DateTimePath<java.time.LocalDateTime> regDate = createDateTime("regDate", java.time.LocalDateTime.class);
 
     public final StringPath regId = createString("regId");
 
-    public final DateTimePath<java.util.Date> updateDate = createDateTime("updateDate", java.util.Date.class);
+    public final DateTimePath<java.time.LocalDateTime> updateDate = createDateTime("updateDate", java.time.LocalDateTime.class);
 
     public final StringPath updateId = createString("updateId");
 

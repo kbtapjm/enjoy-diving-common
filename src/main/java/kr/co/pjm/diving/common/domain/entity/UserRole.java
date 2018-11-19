@@ -1,7 +1,7 @@
 package kr.co.pjm.diving.common.domain.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,9 +19,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity(name = "user_role")
 public class UserRole implements Serializable {
 
@@ -44,14 +42,13 @@ public class UserRole implements Serializable {
 
   /* 등록일 */
   @Column(name = "reg_date", nullable = false, insertable = true, updatable = false)
-  @Temporal(TemporalType.TIMESTAMP)
   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+9")
-  private Date regDate;
+  private LocalDateTime regDate;
 
   @PrePersist
   public void prePersist() {
-    this.regDate = new Date();
+    this.regDate = LocalDateTime.now();
   }
 
 }

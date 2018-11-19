@@ -31,10 +31,10 @@ public class QUser extends EntityPathBase<User> {
     public final StringPath password = createString("password");
 
     //inherited
-    public final DateTimePath<java.util.Date> regDate = _super.regDate;
+    public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
 
     //inherited
-    public final DateTimePath<java.util.Date> updateDate = _super.updateDate;
+    public final DateTimePath<java.time.LocalDateTime> updateDate = _super.updateDate;
 
     public final QUserBasic userBasic;
 

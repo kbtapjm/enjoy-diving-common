@@ -1,13 +1,11 @@
 package kr.co.pjm.diving.common.domain.entity.common;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -40,18 +38,16 @@ public abstract class CommonSysEntity implements Serializable {
   private String updateId;
 
   @Column(name = "reg_date", nullable = false, insertable = true, updatable = false)
-  @Temporal(TemporalType.TIMESTAMP)
   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+9")
   @CreatedDate
-  private Date regDate;
+  private LocalDateTime regDate;
 
   @Column(name = "update_date", nullable = true, insertable = false, updatable = true)
-  @Temporal(TemporalType.TIMESTAMP)
   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+9")
   @LastModifiedDate
-  private Date updateDate;
+  private LocalDateTime updateDate;
 
   @Override
   public String toString() {

@@ -27,7 +27,7 @@ public class QDiveLog extends EntityPathBase<DiveLog> {
 
     public final EnumPath<kr.co.pjm.diving.common.domain.enumeration.DiveCurrentEnum> diveCurrent = createEnum("diveCurrent", kr.co.pjm.diving.common.domain.enumeration.DiveCurrentEnum.class);
 
-    public final DatePath<java.util.Date> diveDate = createDate("diveDate", java.util.Date.class);
+    public final DatePath<java.time.LocalDate> diveDate = createDate("diveDate", java.time.LocalDate.class);
 
     public final StringPath diveInHour = createString("diveInHour");
 
@@ -90,7 +90,7 @@ public class QDiveLog extends EntityPathBase<DiveLog> {
     public final StringPath maxDepth = createString("maxDepth");
 
     //inherited
-    public final DateTimePath<java.util.Date> regDate = _super.regDate;
+    public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
 
     //inherited
     public final StringPath regId = _super.regId;
@@ -98,7 +98,7 @@ public class QDiveLog extends EntityPathBase<DiveLog> {
     public final StringPath temperature = createString("temperature");
 
     //inherited
-    public final DateTimePath<java.util.Date> updateDate = _super.updateDate;
+    public final DateTimePath<java.time.LocalDateTime> updateDate = _super.updateDate;
 
     //inherited
     public final StringPath updateId = _super.updateId;

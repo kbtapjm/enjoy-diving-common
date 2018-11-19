@@ -19,9 +19,9 @@ public class QCommonEntity extends EntityPathBase<CommonEntity> {
 
     public static final QCommonEntity commonEntity = new QCommonEntity("commonEntity");
 
-    public final DateTimePath<java.util.Date> regDate = createDateTime("regDate", java.util.Date.class);
+    public final DateTimePath<java.time.LocalDateTime> regDate = createDateTime("regDate", java.time.LocalDateTime.class);
 
-    public final DateTimePath<java.util.Date> updateDate = createDateTime("updateDate", java.util.Date.class);
+    public final DateTimePath<java.time.LocalDateTime> updateDate = createDateTime("updateDate", java.time.LocalDateTime.class);
 
     public QCommonEntity(String variable) {
         super(CommonEntity.class, forVariable(variable));

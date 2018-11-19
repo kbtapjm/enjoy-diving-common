@@ -37,11 +37,11 @@ public class User extends CommonEntity {
   private Long id;
 
   /* 이메일 */
-  @Column(name = "email", nullable = false, unique = true)
+  @Column(name = "email", nullable = false, length = 200, unique = true)
   private String email;
 
   /* 비밀번호 */
-  @Column(name = "password", nullable = false)
+  @Column(name = "password", nullable = false, length = 100)
   @JsonIgnore
   private String password;
 

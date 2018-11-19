@@ -31,14 +31,14 @@ public class QUserDive extends EntityPathBase<UserDive> {
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     //inherited
-    public final DateTimePath<java.util.Date> regDate = _super.regDate;
+    public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
 
     public final StringPath signature = createString("signature");
 
     public final StringPath team = createString("team");
 
     //inherited
-    public final DateTimePath<java.util.Date> updateDate = _super.updateDate;
+    public final DateTimePath<java.time.LocalDateTime> updateDate = _super.updateDate;
 
     public final QUser user;
 

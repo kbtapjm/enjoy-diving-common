@@ -1,6 +1,6 @@
 package kr.co.pjm.diving.common.repasitory.support.impl;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport;
@@ -39,7 +39,7 @@ public class UserDiveRepositoryImpl extends QueryDslRepositorySupport implements
     if (!StringUtils.isEmpty(userDiveDto.getSignature())) {
       update.set(qUserDive.signature, userDiveDto.getSignature());
     }
-    update.set(qUserDive.updateDate, new Date());
+    update.set(qUserDive.updateDate, LocalDateTime.now());
 
     return update.execute();
   }

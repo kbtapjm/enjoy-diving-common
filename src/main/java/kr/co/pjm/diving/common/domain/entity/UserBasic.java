@@ -1,6 +1,6 @@
 package kr.co.pjm.diving.common.domain.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -25,9 +23,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity(name = "user_basic")
 public class UserBasic extends CommonEntity {
 
@@ -57,14 +55,13 @@ public class UserBasic extends CommonEntity {
   @Column(name = "profile", nullable = true, length = 200)
   private String profile;
 
-  @Column(name = "introduce", nullable = true, length = 2000)
+  @Column(name = "introduce", nullable = true, columnDefinition = "TEXT")
   private String introduce;
 
   @Column(name = "login_date", nullable = true)
-  @Temporal(TemporalType.TIMESTAMP)
   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-  private Date loginDate;
+  private LocalDateTime loginDate;
 
   @OneToOne(mappedBy = "userBasic")
   @JoinColumn(name = "user_id")
