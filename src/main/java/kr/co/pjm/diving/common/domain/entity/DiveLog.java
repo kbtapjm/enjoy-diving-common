@@ -109,7 +109,7 @@ public class DiveLog extends CommonSysEntity {
   private String diveSafetyTime;
 
   /* 다이빙 계획 도구 */
-  @Column(name = "dive_plan_tool", nullable = false)
+  @Column(name = "dive_plan_tool", nullable = false, length = 50)
   @Enumerated(EnumType.STRING)
   private DivePlanToolEnum divePlanTool;
 
@@ -122,7 +122,7 @@ public class DiveLog extends CommonSysEntity {
   private String divePlanEanx;
 
   /* 노출 보호 */
-  @Column(name = "dive_plan_exr_ptn", nullable = false)
+  @Column(name = "dive_plan_exr_ptn", nullable = false, length = 50)
   @Enumerated(EnumType.STRING)
   private DivePlanExrPtnEnum divePlanExrPtn;
 
@@ -170,22 +170,22 @@ public class DiveLog extends CommonSysEntity {
   private String temperature;
 
   /* 다이브 유형 */
-  @Column(name = "dive_type", nullable = true)
+  @Column(name = "dive_type", nullable = true, length = 50)
   @Enumerated(EnumType.STRING)
   private DiveTypeEnum diveType;
 
   /* 다이브 워터 */
-  @Column(name = "dive_water", nullable = true)
+  @Column(name = "dive_water", nullable = true, length = 50)
   @Enumerated(EnumType.STRING)
   private DiveWaterEnum diveWater;
 
   /* 다이브 파도 */
-  @Column(name = "dive_wave", nullable = true)
+  @Column(name = "dive_wave", nullable = true, length = 50)
   @Enumerated(EnumType.STRING)
   private DiveWaveEnum diveWave;
 
   /* 다이브 조류 */
-  @Column(name = "dive_current", nullable = true)
+  @Column(name = "dive_current", nullable = true, length = 50)
   @Enumerated(EnumType.STRING)
   private DiveCurrentEnum diveCurrent;
 
