@@ -1,6 +1,7 @@
 package kr.co.pjm.diving.common.domain.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.Lob;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -24,13 +26,13 @@ import kr.co.pjm.diving.common.domain.enumeration.DiveTypeEnum;
 import kr.co.pjm.diving.common.domain.enumeration.DiveWaterEnum;
 import kr.co.pjm.diving.common.domain.enumeration.DiveWaveEnum;
 import kr.co.pjm.diving.common.domain.enumeration.YnEnum;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-//@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Setter
 @Entity(name = "dive_log")
@@ -228,7 +230,8 @@ public class DiveLog extends CommonSysEntity {
       DivePlanExrPtnEnum divePlanExrPtn, YnEnum divePlanHoodYn, YnEnum divePlanGlovesYn, YnEnum divePlanBootsYn,
       YnEnum divePlanLightYn, YnEnum divePlanSmbYn, YnEnum divePlanKnifeYn, YnEnum divePlanCameraYn, String visibility,
       String temperature, DiveTypeEnum diveType, DiveWaterEnum diveWater, DiveWaveEnum diveWave,
-      DiveCurrentEnum diveCurrent, String diveActivity, String diveNote, String regId) {
+      DiveCurrentEnum diveCurrent, String diveActivity, String diveNote, String regId, String updateId,
+      LocalDateTime regDate, LocalDateTime updateDate) {
     this.id = id;
     this.diveNo = diveNo;
     this.diveDate = diveDate;
@@ -265,6 +268,19 @@ public class DiveLog extends CommonSysEntity {
     this.diveCurrent = diveCurrent;
     this.diveActivity = diveActivity;
     this.diveNote = diveNote;
+    
+    if (StringUtils.isEmpty(regId)) {
+      this.setRegId(regId);  
+    }
+    if (StringUtils.isEmpty(updateId)) {
+      this.setRegId(updateId);  
+    }
+    if (regDate != null) {
+      this.setRegDate(regDate);  
+    }
+    if (updateDate != null) {
+      this.setUpdateDate(updateDate);  
+    }
   }
 
 }
