@@ -19,13 +19,15 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import kr.co.pjm.diving.common.domain.entity.common.CommonEntity;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity(name = "user")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class User extends CommonEntity {
@@ -64,5 +66,16 @@ public class User extends CommonEntity {
   @OneToOne
   @JoinColumn(name = "user_dive_id")
   private UserDive userDive;
+
+  @Builder
+  public User(Long id, String email, String password, Set<UserRole> userRoles, UserBasic userBasic, UserDive userDive) {
+    super();
+    this.id = id;
+    this.email = email;
+    this.password = password;
+    this.userRoles = userRoles;
+    this.userBasic = userBasic;
+    this.userDive = userDive;
+  }
   
 }

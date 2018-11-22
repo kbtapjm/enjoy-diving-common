@@ -10,13 +10,13 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import kr.co.pjm.diving.common.domain.entity.common.CommonEntity;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Setter
 @Entity(name = "user_dive")
 public class UserDive extends CommonEntity {
 
@@ -47,5 +47,15 @@ public class UserDive extends CommonEntity {
   @JoinColumn(name = "user_id")
   @JsonIgnore
   private User user;
+
+  @Builder
+  public UserDive(Long id, String diveGroup, String diveLevel, String team, String signature, User user) {
+    this.id = id;
+    this.diveGroup = diveGroup;
+    this.diveLevel = diveLevel;
+    this.team = team;
+    this.signature = signature;
+    this.user = user;
+  }
 
 }

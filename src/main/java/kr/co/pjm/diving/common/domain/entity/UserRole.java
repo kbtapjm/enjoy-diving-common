@@ -1,23 +1,20 @@
 package kr.co.pjm.diving.common.domain.entity;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import kr.co.pjm.diving.common.domain.entity.common.CommonEntity;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Setter
 @Entity(name = "user_role")
 public class UserRole extends CommonEntity {
 
@@ -36,9 +33,10 @@ public class UserRole extends CommonEntity {
   @JoinColumn(name = "role_id")
   private Role role;
 
-  @PrePersist
-  public void prePersist() {
-    this.setRegDate(LocalDateTime.now());
+  @Builder
+  public UserRole(User user, Role role) {
+    this.user = user;
+    this.role = role;
   }
 
 }

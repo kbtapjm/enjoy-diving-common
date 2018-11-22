@@ -34,7 +34,6 @@ import lombok.Setter;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Setter
 @Entity(name = "dive_log")
 public class DiveLog extends CommonSysEntity {
 
@@ -269,11 +268,11 @@ public class DiveLog extends CommonSysEntity {
     this.diveActivity = diveActivity;
     this.diveNote = diveNote;
     
-    if (StringUtils.isEmpty(regId)) {
+    if (!StringUtils.isEmpty(regId)) {
       this.setRegId(regId);  
     }
-    if (StringUtils.isEmpty(updateId)) {
-      this.setRegId(updateId);  
+    if (!StringUtils.isEmpty(updateId)) {
+      this.setUpdateId(updateId);  
     }
     if (regDate != null) {
       this.setRegDate(regDate);  

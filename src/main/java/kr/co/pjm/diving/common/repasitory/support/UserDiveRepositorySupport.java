@@ -1,9 +1,9 @@
 package kr.co.pjm.diving.common.repasitory.support;
 
-import kr.co.pjm.diving.common.domain.dto.UserDiveDto;
+import kr.co.pjm.diving.common.domain.entity.UserDive;
 
 public interface UserDiveRepositorySupport {
 
-  long updateUserDive(UserDiveDto userDiveDto);
+  long updateUserDive(UserDive userDive);
   
 }

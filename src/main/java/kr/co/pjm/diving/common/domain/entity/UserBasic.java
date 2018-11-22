@@ -19,13 +19,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import kr.co.pjm.diving.common.domain.entity.common.CommonEntity;
 import kr.co.pjm.diving.common.domain.enumeration.GenderEnum;
 import kr.co.pjm.diving.common.domain.enumeration.UserStatusEnum;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Setter
 @Entity(name = "user_basic")
 public class UserBasic extends CommonEntity {
 
@@ -76,5 +76,20 @@ public class UserBasic extends CommonEntity {
   @JoinColumn(name = "user_id")
   @JsonIgnore
   private User user;
+
+  @Builder
+  public UserBasic(Long id, String name, String nickname, GenderEnum gender, String country, UserStatusEnum status,
+      String profile, String introduce, LocalDateTime loginDate, User user) {
+    this.id = id;
+    this.name = name;
+    this.nickname = nickname;
+    this.gender = gender;
+    this.country = country;
+    this.status = status;
+    this.profile = profile;
+    this.introduce = introduce;
+    this.loginDate = loginDate;
+    this.user = user;
+  }
 
 }

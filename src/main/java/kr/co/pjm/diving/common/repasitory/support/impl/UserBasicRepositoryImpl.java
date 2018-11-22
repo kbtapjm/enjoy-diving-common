@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.querydsl.core.dml.UpdateClause;
 import com.querydsl.jpa.impl.JPAUpdateClause;
 
-import kr.co.pjm.diving.common.domain.dto.UserBasicDto;
 import kr.co.pjm.diving.common.domain.entity.QUserBasic;
 import kr.co.pjm.diving.common.domain.entity.UserBasic;
 import kr.co.pjm.diving.common.repasitory.support.UserBasicRepositorySupport;
@@ -22,25 +21,25 @@ public class UserBasicRepositoryImpl extends QueryDslRepositorySupport implement
   }
 
   @Override
-  public long updateUserBasic(UserBasicDto userBasicDto) {
+  public long updateUserBasic(UserBasic userBasic) {
     QUserBasic qUserBasic = QUserBasic.userBasic;
 
-    UpdateClause<JPAUpdateClause> update = update(qUserBasic).where(qUserBasic.id.eq(userBasicDto.getId()));
+    UpdateClause<JPAUpdateClause> update = update(qUserBasic).where(qUserBasic.id.eq(userBasic.getId()));
 
-    if (!StringUtils.isEmpty(userBasicDto.getName())) {
-      update.set(qUserBasic.name, userBasicDto.getName());
+    if (!StringUtils.isEmpty(userBasic.getName())) {
+      update.set(qUserBasic.name, userBasic.getName());
     }
-    if (!StringUtils.isEmpty(userBasicDto.getNickname())) {
-      update.set(qUserBasic.nickname, userBasicDto.getNickname());
+    if (!StringUtils.isEmpty(userBasic.getNickname())) {
+      update.set(qUserBasic.nickname, userBasic.getNickname());
     }
-    if (!StringUtils.isEmpty(userBasicDto.getCountry())) {
-      update.set(qUserBasic.country, userBasicDto.getCountry());
+    if (!StringUtils.isEmpty(userBasic.getCountry())) {
+      update.set(qUserBasic.country, userBasic.getCountry());
     }
-    if (userBasicDto.getGender() != null) {
-      update.set(qUserBasic.gender, userBasicDto.getGender());
+    if (userBasic.getGender() != null) {
+      update.set(qUserBasic.gender, userBasic.getGender());
     }
-    if (!StringUtils.isEmpty(userBasicDto.getIntroduce())) {
-      update.set(qUserBasic.introduce, userBasicDto.getIntroduce());
+    if (!StringUtils.isEmpty(userBasic.getIntroduce())) {
+      update.set(qUserBasic.introduce, userBasic.getIntroduce());
     }
     
     update.set(qUserBasic.updateDate, LocalDateTime.now());
@@ -49,11 +48,11 @@ public class UserBasicRepositoryImpl extends QueryDslRepositorySupport implement
   }
 
   @Override
-  public long updateLoginDate(UserBasicDto userBasicDto) {
+  public long updateLoginDate(UserBasic userBasic) {
     QUserBasic qUserBasic = QUserBasic.userBasic;
 
     Long result = update(qUserBasic)
-        .where(qUserBasic.id.eq(userBasicDto.getId()))
+        .where(qUserBasic.id.eq(userBasic.getId()))
         .set(qUserBasic.loginDate, LocalDateTime.now())
         .execute();
 

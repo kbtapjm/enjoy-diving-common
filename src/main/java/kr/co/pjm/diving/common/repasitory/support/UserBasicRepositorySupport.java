@@ -1,11 +1,11 @@
 package kr.co.pjm.diving.common.repasitory.support;
 
-import kr.co.pjm.diving.common.domain.dto.UserBasicDto;
+import kr.co.pjm.diving.common.domain.entity.UserBasic;
 
 public interface UserBasicRepositorySupport {
 
-  long updateUserBasic(UserBasicDto userBasicDto);
+  long updateUserBasic(UserBasic userBasic);
 
-  long updateLoginDate(UserBasicDto userBasicDto);
+  long updateLoginDate(UserBasic userBasic);
 
 }

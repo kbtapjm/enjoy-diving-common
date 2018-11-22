@@ -14,13 +14,12 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import kr.co.pjm.diving.common.domain.entity.common.CommonEntity;
 import kr.co.pjm.diving.common.domain.enumeration.RoleTypeEnum;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Setter
 @Entity(name = "role")
 public class Role extends CommonEntity {
 

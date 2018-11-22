@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.querydsl.core.dml.UpdateClause;
 import com.querydsl.jpa.impl.JPAUpdateClause;
 
-import kr.co.pjm.diving.common.domain.dto.UserDiveDto;
 import kr.co.pjm.diving.common.domain.entity.QUserDive;
 import kr.co.pjm.diving.common.domain.entity.UserDive;
 import kr.co.pjm.diving.common.repasitory.support.UserDiveRepositorySupport;
@@ -22,22 +21,22 @@ public class UserDiveRepositoryImpl extends QueryDslRepositorySupport implements
   }
 
   @Override
-  public long updateUserDive(UserDiveDto userDiveDto) {
+  public long updateUserDive(UserDive userDive) {
     QUserDive qUserDive = QUserDive.userDive;
 
-    UpdateClause<JPAUpdateClause> update = update(qUserDive).where(qUserDive.id.eq(userDiveDto.getId()));
+    UpdateClause<JPAUpdateClause> update = update(qUserDive).where(qUserDive.id.eq(userDive.getId()));
 
-    if (!StringUtils.isEmpty(userDiveDto.getDiveGroup())) {
-      update.set(qUserDive.diveGroup, userDiveDto.getDiveGroup());
+    if (!StringUtils.isEmpty(userDive.getDiveGroup())) {
+      update.set(qUserDive.diveGroup, userDive.getDiveGroup());
     }
-    if (!StringUtils.isEmpty(userDiveDto.getDiveLevel())) {
-      update.set(qUserDive.diveLevel, userDiveDto.getDiveLevel());
+    if (!StringUtils.isEmpty(userDive.getDiveLevel())) {
+      update.set(qUserDive.diveLevel, userDive.getDiveLevel());
     }
-    if (!StringUtils.isEmpty(userDiveDto.getTeam())) {
-      update.set(qUserDive.team, userDiveDto.getTeam());
+    if (!StringUtils.isEmpty(userDive.getTeam())) {
+      update.set(qUserDive.team, userDive.getTeam());
     }
-    if (!StringUtils.isEmpty(userDiveDto.getSignature())) {
-      update.set(qUserDive.signature, userDiveDto.getSignature());
+    if (!StringUtils.isEmpty(userDive.getSignature())) {
+      update.set(qUserDive.signature, userDive.getSignature());
     }
     update.set(qUserDive.updateDate, LocalDateTime.now());
 
