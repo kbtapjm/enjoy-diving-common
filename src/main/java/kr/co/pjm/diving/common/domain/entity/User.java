@@ -52,6 +52,10 @@ public class User extends CommonEntity {
   @JsonIgnore
   private String confirmPassword;
 
+  /* 소셜 공급자 */
+  @Column(name = "provider", nullable = false, length = 20)
+  private String provider;
+
   /* 유저 롤 */
   @JsonManagedReference
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -68,7 +72,8 @@ public class User extends CommonEntity {
   private UserDive userDive;
 
   @Builder
-  public User(Long id, String email, String password, Set<UserRole> userRoles, UserBasic userBasic, UserDive userDive) {
+  public User(Long id, String email, String password, Set<UserRole> userRoles, UserBasic userBasic,
+      UserDive userDive, String provider) {
     super();
     this.id = id;
     this.email = email;
@@ -76,6 +81,7 @@ public class User extends CommonEntity {
     this.userRoles = userRoles;
     this.userBasic = userBasic;
     this.userDive = userDive;
+    this.provider = provider;
   }
-  
+
 }
