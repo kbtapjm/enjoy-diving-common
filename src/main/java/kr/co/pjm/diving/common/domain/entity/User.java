@@ -74,7 +74,6 @@ public class User extends CommonEntity {
   @Builder
   public User(Long id, String email, String password, Set<UserRole> userRoles, UserBasic userBasic,
       UserDive userDive, String provider) {
-    super();
     this.id = id;
     this.email = email;
     this.password = password;

@@ -22,9 +22,15 @@ public class QUserRole extends EntityPathBase<UserRole> {
 
     public static final QUserRole userRole = new QUserRole("userRole");
 
-    public final DateTimePath<java.time.LocalDateTime> regDate = createDateTime("regDate", java.time.LocalDateTime.class);
+    public final kr.co.pjm.diving.common.domain.entity.common.QCommonEntity _super = new kr.co.pjm.diving.common.domain.entity.common.QCommonEntity(this);
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
 
     public final QRole role;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> updateDate = _super.updateDate;
 
     public final QUser user;
 
