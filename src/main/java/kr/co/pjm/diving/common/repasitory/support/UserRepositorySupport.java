@@ -5,7 +5,5 @@ import kr.co.pjm.diving.common.domain.entity.User;
 public interface UserRepositorySupport {
   
   long updatePassword(User user);
-  
-  User findUseById(Long id);
 
 }

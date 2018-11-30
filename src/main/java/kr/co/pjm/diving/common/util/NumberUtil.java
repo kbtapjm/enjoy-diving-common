@@ -7,12 +7,12 @@ public class NumberUtil {
   private NumberUtil() {
   }
 
-  private static class StringUtilHolder {
+  private static class NumberUtilHolder {
     static final NumberUtil single = new NumberUtil();
   }
 
   public static NumberUtil getInstance() {
-    return StringUtilHolder.single;
+    return NumberUtilHolder.single;
   }
 
   public Integer isNumber(String str) {

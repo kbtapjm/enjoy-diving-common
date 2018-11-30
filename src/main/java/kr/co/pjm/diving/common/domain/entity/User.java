@@ -24,12 +24,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Setter
 @Entity(name = "user")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@ToString(exclude = {"userBasic", "userDive"})  
 public class User extends CommonEntity {
 
   private static final long serialVersionUID = 3131289288410385391L;

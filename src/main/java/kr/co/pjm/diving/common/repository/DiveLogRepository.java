@@ -5,8 +5,9 @@ import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 import kr.co.pjm.diving.common.domain.entity.DiveLog;
+import kr.co.pjm.diving.common.repasitory.support.DiveLogRepositorySupport;
 
 @Repository
-public interface DiveLogRepository extends JpaRepository<DiveLog, Long>, QueryDslPredicateExecutor<DiveLog> {
+public interface DiveLogRepository extends JpaRepository<DiveLog, Long>, QueryDslPredicateExecutor<DiveLog>, DiveLogRepositorySupport {
 
 }
