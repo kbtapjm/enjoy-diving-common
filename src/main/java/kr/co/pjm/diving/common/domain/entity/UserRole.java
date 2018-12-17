@@ -1,6 +1,7 @@
 package kr.co.pjm.diving.common.domain.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,14 +23,14 @@ public class UserRole extends CommonEntity {
 
   /* 유저 */
   @Id
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "user_id")
   @JsonBackReference
   private User user;
 
   /* 롤 */
   @Id
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "role_id")
   private Role role;
 
