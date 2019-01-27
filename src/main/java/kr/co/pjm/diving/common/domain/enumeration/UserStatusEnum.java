@@ -1,7 +1,7 @@
 package kr.co.pjm.diving.common.domain.enumeration;
 
 public enum UserStatusEnum {
-  NORMAL(0, "정상 회원"), WITHDRAWAL(1, "탈퇴 회원");
+  NORMAL(0, "정상 회원"), LEAVE(1, "탈퇴 회원");
 
   private int code;
   private String description;
