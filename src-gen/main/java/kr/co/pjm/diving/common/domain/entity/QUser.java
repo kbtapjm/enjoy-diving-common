@@ -28,6 +28,8 @@ public class QUser extends EntityPathBase<User> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
+    public final SetPath<UserLoginLog, QUserLoginLog> logHistory = this.<UserLoginLog, QUserLoginLog>createSet("logHistory", UserLoginLog.class, QUserLoginLog.class, PathInits.DIRECT2);
+
     public final StringPath password = createString("password");
 
     public final StringPath provider = createString("provider");

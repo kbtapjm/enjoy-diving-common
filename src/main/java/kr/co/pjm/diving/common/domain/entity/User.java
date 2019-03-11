@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -72,6 +73,11 @@ public class User extends CommonEntity {
   @OneToOne
   @JoinColumn(name = "user_dive_id")
   private UserDive userDive;
+  
+  /* 유저 로그인 이력 */
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+  @JsonIgnore
+  private Set<UserLoginLog> logHistory = new HashSet<UserLoginLog>();
 
   @Builder
   public User(Long id, String email, String password, Set<UserRole> userRoles, UserBasic userBasic,
