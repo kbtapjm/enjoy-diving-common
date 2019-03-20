@@ -22,17 +22,11 @@ public class QUserLoginLog extends EntityPathBase<UserLoginLog> {
 
     public static final QUserLoginLog userLoginLog = new QUserLoginLog("userLoginLog");
 
-    public final kr.co.pjm.diving.common.domain.entity.common.QCommonEntity _super = new kr.co.pjm.diving.common.domain.entity.common.QCommonEntity(this);
-
     public final StringPath email = createString("email");
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    //inherited
-    public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
-
-    //inherited
-    public final DateTimePath<java.time.LocalDateTime> updateDate = _super.updateDate;
+    public final DateTimePath<java.time.LocalDateTime> loginDateTime = createDateTime("loginDateTime", java.time.LocalDateTime.class);
 
     public final QUser user;
 

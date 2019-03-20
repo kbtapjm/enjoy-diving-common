@@ -1,6 +1,6 @@
 package kr.co.pjm.diving.common.domain.entity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,44 +16,36 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Entity(name = "user_login_log")
-public class UserLoginLog {
+@Entity(name = "user_login_log_daily")
+public class UserLoginLogDaily {
   
   @Id
   @GeneratedValue
   private Long id;
   
-  /* 이메일 */
-  @Column(name = "email", nullable = false, length = 200)
-  private String email;
+  /* 로그인 일자 */
+  @Column(name = "login_date", nullable = false, insertable = true)
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  @JsonFormat(pattern = "yyyy-MM-dd")
+  private LocalDate loginDate;
   
-  /* 로그인 날짜 */
-  @Column(name = "login_date_time", nullable = false, insertable = true)
-  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+9")
-  private LocalDateTime loginDateTime;
+  /* 로그인 카운트 */
+  @Column(name = "login_count", nullable = false)
+  private Long loginCount;
   
   /* 유저 */
   @ManyToOne(fetch = FetchType.LAZY)
   @JsonIgnore
   private User user;
-
-  @Builder
-  public UserLoginLog(String email, User user) {
-    super();
-    this.email = email;
-    this.user = user;
-  }
   
   @PrePersist
   public void prePersist() {
-    this.loginDateTime = LocalDateTime.now();
+    this.loginDate = LocalDate.now();
   }
 
 }
