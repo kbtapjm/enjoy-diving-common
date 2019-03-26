@@ -8,6 +8,7 @@ import kr.co.pjm.diving.common.domain.entity.UserDive;
 import kr.co.pjm.diving.common.repasitory.support.UserDiveRepositorySupport;
 
 @Repository
-public interface UserDiveRepository extends JpaRepository<UserDive, Long>, QueryDslPredicateExecutor<UserDive>, UserDiveRepositorySupport {
+public interface UserDiveRepository extends JpaRepository<UserDive, Long>,
+    QueryDslPredicateExecutor<UserDive>, UserDiveRepositorySupport {
 
 }

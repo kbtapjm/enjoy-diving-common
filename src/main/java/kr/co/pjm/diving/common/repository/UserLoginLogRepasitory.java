@@ -5,8 +5,10 @@ import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 import kr.co.pjm.diving.common.domain.entity.UserLoginLog;
+import kr.co.pjm.diving.common.repasitory.support.UserLoginLogRepasitorySupport;
 
 @Repository
-public interface UserLoginLogRepasitory extends JpaRepository<UserLoginLog, Long>, QueryDslPredicateExecutor<UserLoginLog> {
+public interface UserLoginLogRepasitory extends JpaRepository<UserLoginLog, Long>,
+    QueryDslPredicateExecutor<UserLoginLog>, UserLoginLogRepasitorySupport {
 
 }
