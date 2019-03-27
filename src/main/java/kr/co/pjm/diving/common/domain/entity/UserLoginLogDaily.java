@@ -8,7 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -42,10 +41,5 @@ public class UserLoginLogDaily {
   @ManyToOne(fetch = FetchType.LAZY)
   @JsonIgnore
   private User user;
-  
-  @PrePersist
-  public void prePersist() {
-    this.loginDate = LocalDate.now();
-  }
 
 }

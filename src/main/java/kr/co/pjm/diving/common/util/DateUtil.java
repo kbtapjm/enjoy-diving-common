@@ -4,7 +4,10 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
@@ -34,6 +37,18 @@ public class DateUtil {
     }
 
     return dt;
+  }
+  
+  public LocalDateTime toLocalDateTime(String dateStr, String format) {
+    DateTimeFormatter DATEFORMATTER1 = DateTimeFormatter.ofPattern(format);
+
+    DateTimeFormatter DATEFORMATTER = new DateTimeFormatterBuilder().append(DATEFORMATTER1)
+        .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
+        .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
+        .parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
+        .toFormatter();
+
+    return LocalDateTime.parse(dateStr, DATEFORMATTER);
   }
 
   public String getTimestampToDateString(long time, String format) {

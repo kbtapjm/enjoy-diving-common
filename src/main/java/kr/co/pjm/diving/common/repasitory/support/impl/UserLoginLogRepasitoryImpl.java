@@ -1,5 +1,6 @@
 package kr.co.pjm.diving.common.repasitory.support.impl;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,6 +16,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import kr.co.pjm.diving.common.domain.entity.QUserLoginLog;
 import kr.co.pjm.diving.common.domain.entity.UserLoginLog;
 import kr.co.pjm.diving.common.repasitory.support.UserLoginLogRepasitorySupport;
+import kr.co.pjm.diving.common.util.DateUtil;
 
 @Repository
 public class UserLoginLogRepasitoryImpl extends QueryDslRepositorySupport
@@ -36,6 +38,7 @@ public class UserLoginLogRepasitoryImpl extends QueryDslRepositorySupport
     List<Tuple> list = queryFactory
         .select(qUserLoginLog.email, qUserLoginLog.email.count())
         .from(qUserLoginLog)
+        .where(qUserLoginLog.loginDateTime.eq(DateUtil.getInstance().toLocalDateTime(loginDate, DateUtil.FORMAT_YYYY_MM_DD)))   // BETWEEN 으로 변경
         .groupBy(qUserLoginLog.email, qUserLoginLog.loginDateTime)
         .fetch();
     
