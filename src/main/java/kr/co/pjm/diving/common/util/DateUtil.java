@@ -40,15 +40,17 @@ public class DateUtil {
   }
   
   public LocalDateTime toLocalDateTime(String dateStr, String format) {
-    DateTimeFormatter DATEFORMATTER1 = DateTimeFormatter.ofPattern(format);
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format); 
+    LocalDateTime localDateTime = LocalDateTime.parse(dateStr, formatter);
 
-    DateTimeFormatter DATEFORMATTER = new DateTimeFormatterBuilder().append(DATEFORMATTER1)
-        .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
-        .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
-        .parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
-        .toFormatter();
-
-    return LocalDateTime.parse(dateStr, DATEFORMATTER);
+    return localDateTime;
+  }
+  
+  public LocalDate toLocalDate(String dateStr, String format) {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+    LocalDate localDate = LocalDate.parse(dateStr, formatter);
+    
+    return localDate;
   }
 
   public String getTimestampToDateString(long time, String format) {
@@ -74,4 +76,17 @@ public class DateUtil {
   public String getLocalDateToString(long daysToSubtract, String format) {
     return LocalDate.now().minusDays(daysToSubtract).format(DateTimeFormatter.ofPattern(format));
   }
+  
+  /*public LocalDateTime toLocalDateTime(String dateStr, String format) {
+    DateTimeFormatter DATEFORMATTER1 = DateTimeFormatter.ofPattern(format);
+
+    DateTimeFormatter DATEFORMATTER = new DateTimeFormatterBuilder().append(DATEFORMATTER1)
+        .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
+        .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
+        .parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
+        .toFormatter();
+
+    return LocalDateTime.parse(dateStr, DATEFORMATTER);
+  }*/
+  
 }

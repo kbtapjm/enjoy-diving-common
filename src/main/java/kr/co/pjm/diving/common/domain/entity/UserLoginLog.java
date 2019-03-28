@@ -1,5 +1,6 @@
 package kr.co.pjm.diving.common.domain.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -43,12 +45,24 @@ public class UserLoginLog {
   @ManyToOne(fetch = FetchType.LAZY)
   @JsonIgnore
   private User user;
-
+  
+  /* 로그인 일자 */
+  @Transient
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+9")
+  private LocalDate loginDate;
+  
+  /* 로그인 카운트 */
+  @Transient
+  private Long loginCount; 
+  
   @Builder
-  public UserLoginLog(String email, User user) {
+  public UserLoginLog(String email, User user, Long loginCount, LocalDate loginDate) {
     super();
     this.email = email;
     this.user = user;
+    this.loginCount = loginCount;
+    this.loginDate = loginDate;
   }
   
   @PrePersist

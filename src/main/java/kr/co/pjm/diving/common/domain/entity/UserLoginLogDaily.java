@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -41,5 +42,13 @@ public class UserLoginLogDaily {
   @ManyToOne(fetch = FetchType.LAZY)
   @JsonIgnore
   private User user;
+
+  @Builder
+  public UserLoginLogDaily(LocalDate loginDate, Long loginCount, User user) {
+    super();
+    this.loginDate = loginDate;
+    this.loginCount = loginCount;
+    this.user = user;
+  }
 
 }
